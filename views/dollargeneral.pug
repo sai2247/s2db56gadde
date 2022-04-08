@@ -1,0 +1,33 @@
+extends layout
+block content
+  h1= title
+  p Welcome to the dollargeneral 
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let dollargeneral = [
+                    {
+                        "Itemname": "Coca-cola",
+                        "Quantity": 23,
+                        "price": "Tweleve USD"
+                    },
+                    {
+                        "Itemname": "Pepsi",
+                        "Quantity": 40,
+                        "price": "Twenty USD"
+                    },
+                    {
+                        "Itemname": "Seven-up",
+                        "Quantity": 28,
+                        "price": "Thirty USD"
+                    },                   
+                ]
+            each v,index in dollargeneral
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.Itemname}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.Quantity}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.price}
+  script.                
+        function buy(intemNo)
+        {
+              alert(`you purchased Item ${intemNo+1}`)
+        }
