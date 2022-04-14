@@ -13,18 +13,18 @@ router.get('/', api_controller.api);
 /// dollargeneral ROUTES /// 
  
 // POST request for creating a dollargeneral.  
-router.post('/dollargenerals', dollargeneral_controller.dollargeneral_create_post); 
+router.post('/dollargeneral', dollargeneral_controller.dollargeneral_create_post); 
  
 // DELETE request to delete dollargeneral. 
-router.delete('/dollargenerals/:id', dollargeneral_controller.dollargeneral_delete); 
+router.delete('/dollargeneral/:id', dollargeneral_controller.dollargeneral_delete); 
  
 // PUT request to update dollargeneral. 
-router.put('/dollargenerals/:id', dollargeneral_controller.dollargeneral_update_put); 
+router.put('/dollargeneral/:id', dollargeneral_controller.dollargeneral_update_put); 
  
 // GET request for one dollargeneral. 
-router.get('/dollargenerals/:id', dollargeneral_controller.dollargeneral_detail); 
+router.get('/dollargeneral/:id', dollargeneral_controller.dollargeneral_detail); 
  
 // GET request for list of all dollargeneral items. 
-router.get('/dollargenerals', dollargeneral_controller.dollargeneral_list); 
+router.get('/dollargeneral', dollargeneral_controller.dollargeneral_list); 
  
 module.exports = router; 
