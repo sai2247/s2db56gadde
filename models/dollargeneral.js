@@ -5,5 +5,4 @@ const dollargeneralSchema = mongoose.Schema({
     price: String 
 }) 
  
-module.exports = mongoose.model("dollargeneral", 
-dollargeneralSchema)
+module.exports = mongoose.model("dollargeneral", dollargeneralSchema)
