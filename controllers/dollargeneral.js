@@ -24,3 +24,15 @@ exports.dollargeneral_delete = function(req, res) {
 exports.dollargeneral_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: dollargeneral update PUT' + req.params.id); 
 }; 
+
+// List of all Costumes 
+exports.dollargeneral_list = async function(req, res) { 
+    try{ 
+        thedollargeneral = await dollargeneral.find(); 
+        res.send(thedollargeneral); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
