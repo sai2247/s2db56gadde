@@ -31,3 +31,16 @@ exports.dollargeneral_delete = function(req, res) {
 exports.dollargeneral_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: dollargeneral update PUT' + req.params.id); 
 }; 
+
+// VIEWS 
+// Handle a show all view 
+exports.dollargeneral_view_all_Page = async function(req, res) { 
+    try{ 
+        thedollargeneral = await dollargeneral.find(); 
+        res.render('dollargeneral', { title: 'dollargeneral Search Results', results: thedollargeneral }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
