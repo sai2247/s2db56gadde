@@ -7,7 +7,15 @@ exports.dollargeneral_list = function(req, res) {
  
 // for a specific dollargeneral. 
 exports.dollargeneral_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: dollargeneral detail: ' + req.params.id); 
+     
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await dollargeneral.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 // Handle dollargeneral create on POST. 
