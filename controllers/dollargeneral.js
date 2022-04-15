@@ -6,8 +6,7 @@ exports.dollargeneral_list = function(req, res) {
 }; 
  
 // for a specific dollargeneral. 
-exports.dollargeneral_detail = function(req, res) { 
-     
+exports.dollargeneral_detail = async function(req, res) {    
     console.log("detail"  + req.params.id) 
     try { 
         result = await dollargeneral.findById( req.params.id) 
@@ -44,10 +43,24 @@ exports.dollargeneral_delete = function(req, res) {
 }; 
  
 // Handle dollargeneral update form on PUT. 
-exports.dollargeneral_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: dollargeneral update PUT' + req.params.id); 
-}; 
-
+exports.dollargeneral_update_put =  async function(req, res) {
+        console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`) 
+        try { 
+            let toUpdate = await dollargeneral.findById( req.params.id) 
+            // Do updates of properties 
+            if(req.body.dollargeneral_Itemname)  
+                   toUpdate.dollargeneral_Itemname = req.body.dollargeneral_Itemname; 
+            if(req.body.cost) toUpdate.Quantity = req.body.Quantity; 
+            if(req.body.size) toUpdate.Price = req.body.Price; 
+            let result = await toUpdate.save(); 
+            console.log("Sucess " + result) 
+            res.send(result) 
+        } catch (err) { 
+            res.status(500) 
+            res.send(`{"error": ${err}: Update for id ${req.params.id} 
+    failed`); 
+        } 
+    }; 
 // List of all dollargenerals
 exports.dollargeneral_list = async function(req, res) {
     try{
