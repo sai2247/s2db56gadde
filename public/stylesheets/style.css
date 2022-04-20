@@ -8,6 +8,8 @@ a {
 }
 
 .dollargeneralAttr { 
-  background-color: aquamarine; 
+  background-color:yellow; 
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
   width: 120px; 
 } 

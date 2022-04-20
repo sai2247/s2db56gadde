@@ -7,7 +7,7 @@ block content
     h2 No instance to delete 
   else 
     - let dollargeneralid = toShow._id 
-    - let dollargeneral_type = toShow.dollargeneral_type 
+    - let dollargeneral_type = toShow.Itemname
     - let dollargeneralQuantity = toShow.Quantity 
     - let dollargeneralprice = toShow.price 
     - let actionid = "/resource/dollargeneral/" + dollargeneralid 
@@ -34,20 +34,20 @@ block content
       // Go back to the home page for the dollargeneral collection 
       window.location.href='/dollargeneral' 
     } 
-script. 
-    function deleteOnid() { 
-      console.log("starting delete") 
-      // delete first 
-      fetch(actionid, { 
-        method: 'DELETE'      
-        }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Delete succeded") 
-        window.location.href='/dollargeneral' 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Delete failed " + error ) 
-      }); 
-    } 
+  script.
+    function deleteOnid() {
+      console.log("starting delete")
+      // delete first
+      fetch(actionid, {
+        method: 'DELETE'      // Don't need a body for the delete
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/dollargeneral'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+      });
+    }

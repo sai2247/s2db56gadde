@@ -20,3 +20,29 @@ block content
     div.row 
       div(class='dollargeneralAttr mr-3') dollargeneral Quantity is: 
       div #{dollargeneralQuantity} 
+
+      button(class="btn btn-danger m-2" onclick="detailOnid()") Detail 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the dollargeneral collection 
+      window.location.href='/dollargeneral' 
+    } 
+  script.
+    function detailOnid() {
+      console.log("starting detail")
+      // detail first
+      fetch(actionid, {
+        method: 'GET'      // Don't need a body for the detail
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("detail succeded")
+        window.location.href='/dollargeneral'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("detail failed " + error )
+      });
+    }

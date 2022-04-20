@@ -24,20 +24,28 @@ block content
         input#Quantity(type='number', name='Quantity', value= dollargeneralQuantity ) 
     input(type="submit") 
  
+    button(class="btn btn-danger m-2" onclick="updateOnid()") Update 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
   script. 
-    document.forms['dollargeneralForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
-    }); 
+    function cancel() { 
+      // Go back to the home page for the dollargeneral collection 
+      window.location.href='/dollargeneral' 
+    } 
+  script.
+    function updateOnid() {
+      console.log("starting update")
+      // update first
+      fetch(actionid, {
+        method: 'PUT'      // Don't need a body for the update
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("update succeded")
+        window.location.href='/dollargeneral'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("update failed " + error )
+      });
+    } 
