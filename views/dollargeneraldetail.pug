@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let dollargeneralid = toShow._id 
+  - let dollargeneral_type = toShow.Itemname 
+  - let dollargeneralQuantity = toShow.Quantity
+  - let dollargeneralprice = toShow.price 
+  div 
+    div.row 
+      div(class='dollargeneralAttr mr-3') dollargeneral ID is: 
+      div #{dollargeneralid} 
+    div.row 
+      div(class='dollargeneralAttr mr-3') dollargeneral Type is: 
+      div #{dollargeneral_type} 
+    div.row 
+      div(class='dollargeneralAttr mr-3') dollargeneral price is: 
+      div #{dollargeneralprice} 
+    div.row 
+      div(class='dollargeneralAttr mr-3') dollargeneral Quantity is: 
+      div #{dollargeneralQuantity} 

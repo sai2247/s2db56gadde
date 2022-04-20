@@ -1,0 +1,34 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='dollargeneralForm', action="/resource/dollargeneral", method="POST") 
+    div.form-group 
+        label.dollargeneralAttr(for='dollargeneral_type') dollargeneral type 
+        input#dollargeneral_type(type='text', name='dollargeneral_type') 
+    div.form-group 
+        label.dollargeneralAttr(for='Quantity') dollargeneral Quantity 
+        input#Quantity(type='number', name='Quantity') 
+    div.form-group 
+        label.dollargeneralAttr(for='price') dollargeneral price 
+        input#price(type='text', name='price') 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['dollargeneralForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 

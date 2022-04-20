@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let dollargeneralid = toShow._id 
+  - let dollargeneral_type = toShow.dollargeneral_type 
+  - let dollargeneralQuantity = toShow.Quantity 
+  - let dollargeneralprice = toShow.price 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{dollargeneralid} 
+  - let actionid = "/resource/dollargeneral/" + dollargeneralid 
+  form(id='dollargeneralForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.dollargeneralAttr(for='dollargeneral_type') dollargeneral type 
+        input#dollargeneral_type(type='text', name='dollargeneral_type', value= dollargeneral_type ) 
+    div.form-group 
+        label.dollargeneralAttr(for='price') dollargeneral price 
+        input#price(type='text', name='price', value= dollargeneralprice ) 
+    div.form-group 
+        label.dollargeneralAttr(for='Quantity') dollargeneral Quantity 
+        input#Quantity(type='number', name='Quantity', value= dollargeneralQuantity ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['dollargeneralForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
