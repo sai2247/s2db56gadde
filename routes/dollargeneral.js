@@ -6,7 +6,7 @@ var router = express.Router();
 //router.get('/', function(req, res, next) {
  // res.render('dollargeneral', { title: 'search result' });
 //});
-//router.get('/', dollargeneral_controlers.dollargeneral_view_all_Page );
+router.get('/', dollargeneral_controlers.dollargeneral_view_all_Page );
 /* GET detail dollargeneral page */ 
 router.get('/detail', dollargeneral_controlers.dollargeneral_view_one_Page); 
 /* GET create dollargeneral page */ 
